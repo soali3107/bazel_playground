@@ -2,3 +2,4 @@ flask
 numpy
 sqlalchemy
 requests
+google-photos-takeout-helper
