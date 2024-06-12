@@ -1,4 +1,1 @@
-# Enable Bzlmod for every Bazel command
-common --enable_bzlmod
-
-build --java_runtime_version=remotejdk_19
+build --java_runtime_version=remotejdk_21

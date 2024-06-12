@@ -6,7 +6,7 @@ def main(argv = sys.argv):
         sys.executable
     ] + sys.argv[1:]
 
-    exit(subprocess.call(args))
+    print(args)
 
 if __name__ == "__main__":
     main()

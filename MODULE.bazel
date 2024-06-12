@@ -1,4 +1,5 @@
-bazel_dep(name = "rules_python", version = "0.26.0")
+bazel_dep(name = "rules_python", version = "0.32.2")
+bazel_dep(name = "rules_jvm_external", version = "6.1")
 
 # Unneeded if using pip_parse
 # python = use_extension("@rules_python//python/extensions:python.bzl", "python")
@@ -15,5 +16,16 @@ pip.parse(
     requirements_lock = "//toolchain/python:requirements_lock.txt",
 )
 
-use_repo(pip, "my_deps")
+maven = use_extension("@rules_jvm_external//:extensions.bzl", "maven")
+maven.install(
+    artifacts = [
+        "org.json:json:20240303",
+    ],
+    repositories = [
+        "https://repo1.maven.org/maven2",
+    ],
+    lock_file = "//:maven_install.json",
+)
 
+use_repo(maven, "maven")
+use_repo(pip, "my_deps")
